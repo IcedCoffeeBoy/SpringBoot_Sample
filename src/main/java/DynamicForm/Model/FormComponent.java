@@ -1,4 +1,4 @@
-package Model;
+package DynamicForm.Model;
 
 public class FormComponent {
     public String type;

@@ -1,17 +1,18 @@
 package DynamicForm;
 
-import Model.Form;
-import Model.FormComponent;
+import DynamicForm.Model.FormComponent;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FormController {
 
-    @RequestMapping("/forms")
-    public Form forms() {
+    @RequestMapping("/forms/{id}")
+    public FormComponent forms(@PathVariable("id") int id) {
+
         FormComponent qn1 = new FormComponent("select", "Question 2");
         FormComponent qn2 = new FormComponent("select", "Question 2", "This is very hard");
-        return new Form(qn1, qn2);
+        return id == 1 ? qn1 : qn2;
     }
 }
